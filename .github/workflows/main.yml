@@ -1,0 +1,25 @@
+name: Sequential Echos with Needs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  echo_1:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Echo 1
+      run: |
+        echo "1"
+        # Здесь можно поставить проверку на успешное выполнение, если нужно
+
+  echo_2:
+    needs: echo_1  # Зависит от выполнения echo_1
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Echo 2
+      run: |
+        echo "2"
